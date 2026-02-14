@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gabriela 💛💙</title>
+  <style>
+    :root{
+      --snow:#eaf6ff;
+      --sky:#78b7ff;
+      --pine:#ffd45a;
+      --sea:#00c2d1;
+      --sea2:#0069b4;
+      --ink:#0f172a;
+      --card: rgba(255,255,255,.92);
+      --shadow: 0 22px 60px rgba(0,0,0,.18);
+      --radius: 22px;
+    }
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0; min-height:100vh; display:grid; place-items:center;
+      font-family: ui-rounded, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--ink);
+      overflow:hidden;
+      background:
+        radial-gradient(1200px 700px at 20% 10%, rgba(255,255,255,.9), rgba(255,255,255,0) 60%),
+        radial-gradient(900px 600px at 75% 15%, rgba(255,212,90,.35), rgba(0,0,0,0) 60%),
+        linear-gradient(180deg, var(--sky), #bfe6ff 40%, var(--sea) 70%, var(--sea2));
+    }
+
+    /* Aesthetic overlays: nieve + burbujas */
+    .flakes, .bubbles{
+      position:fixed; inset:0; pointer-events:none; opacity:.7;
+      background-repeat:repeat;
+      mix-blend-mode:soft-light;
+    }
+    .flakes{
+      background-image:
+        radial-gradient(circle, rgba(255,255,255,.9) 1px, transparent 2px),
+        radial-gradient(circle, rgba(255,255,255,.65) 1px, transparent 2px);
+      background-size: 120px 120px, 220px 220px;
+      animation: drift 14s linear infinite;
+      filter: blur(.2px);
+    }
+    .bubbles{
+      opacity:.45;
+      background-image:
+        radial-gradient(circle, rgba(255,255,255,.5) 2px, transparent 3px),
+        radial-gradient(circle, rgba(255,255,255,.35) 3px, transparent 4px),
+        radial-gradient(circle, rgba(255,255,255,.25) 4px, transparent 5px);
+      background-size: 160px 160px, 260px 260px, 360px 360px;
+      animation: rise 18s linear infinite;
+    }
+    @keyframes drift{
+      from{ transform: translateY(-20px); }
+      to{ transform: translateY(40px); }
+    }
+    @keyframes rise{
+      from{ transform: translateY(60px); }
+      to{ transform: translateY(-60px); }
+    }
+
+    .wrap{
+      width:min(560px, 92vw);
+      position:relative;
+      z-index:2;
+    }
+
+    .card{
+      background:var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 26px 22px 22px;
+      border: 1px solid rgba(255,255,255,.5);
+      backdrop-filter: blur(10px);
+      position:relative;
+      overflow:hidden;
+    }
+
+    /* Split vibe banner: arriba “nieve/monte”, abajo “mar” */
+    .banner{
+      height: 140px;
+      border-radius: 18px;
+      position:relative;
+      overflow:hidden;
+      border: 1px solid rgba(0,0,0,.06);
+      margin-bottom: 16px;
+      box-shadow: 0 14px 28px rgba(0,0,0,.10);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.65), rgba(255,255,255,0) 45%),
+        linear-gradient(180deg, #bfe6ff, #eaf6ff 55%, #00c2d1 56%, #0069b4);
+    }
+    /* Montañitas */
+    .banner:before{
+      content:"";
+      position:absolute; left:-8%; top:18%;
+      width:120%; height:70%;
+      background:
+        polygon(0 85%, 12% 55%, 22% 70%, 35% 45%, 46% 65%, 58% 40%, 70% 62%, 82% 48%, 100% 80%, 100% 100%, 0 100%);
+      -webkit-clip-path: polygon(0 85%, 12% 55%, 22% 70%, 35% 45%, 46% 65%, 58% 40%, 70% 62%, 82% 48%, 100% 80%, 100% 100%, 0 100%);
+      clip-path: polygon(0 85%, 12% 55%, 22% 70%, 35% 45%, 46% 65%, 58% 40%, 70% 62%, 82% 48%, 100% 80%, 100% 100%, 0 100%);
+      background-color: rgba(15,23,42,.16);
+      filter: blur(.2px);
+    }
+    /* Piña abstracta */
+    .pineapple{
+      position:absolute; right:14px; bottom:10px;
+      width:58px; height:74px; border-radius: 14px;
+      background:
+        repeating-linear-gradient(45deg, rgba(0,0,0,.08) 0 2px, rgba(255,255,255,0) 2px 10px),
+        linear-gradient(180deg, #ffe18a, var(--pine));
+      border: 1px solid rgba(0,0,0,.08);
+      box-shadow: 0 12px 20px rgba(0,0,0,.12);
+    }
+    .pineapple:before{
+      content:"";
+      position:absolute; left:50%; top:-18px; transform:translateX(-50%);
+      width:46px; height:28px;
+      background: radial-gradient(circle at 30% 70%, #2dd4bf, #16a34a);
+      border-radius: 0 0 14px 14px;
+      clip-path: polygon(50% 0%, 62% 20%, 82% 10%, 72% 45%, 100% 42%, 68% 70%, 82% 100%, 50% 78%, 18% 100%, 32% 70%, 0% 42%, 28% 45%, 18% 10%, 38% 20%);
+      opacity:.95;
+    }
+
+    .tagline{
+      display:flex; gap:10px; justify-content:center; flex-wrap:wrap;
+      font-size: 13px; opacity:.85; margin: 10px 0 18px;
+    }
+    .pill{
+      padding: 7px 10px; border-radius: 999px;
+      background: rgba(255,255,255,.75);
+      border: 1px solid rgba(0,0,0,.06);
+    }
+
+    h1{
+      margin: 2px 0 8px;
+      font-size: clamp(26px, 5vw, 36px);
+      letter-spacing: .2px;
+    }
+    p{ margin: 0 0 16px; opacity:.85; line-height:1.35; }
+
+    .question{
+      margin: 10px 0 14px;
+      font-size: clamp(18px, 3.4vw, 22px);
+      font-weight: 700;
+    }
+
+    .btns{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:10px; }
+    button{
+      border:0; border-radius: 16px; padding: 12px 20px;
+      font-size: 18px; cursor:pointer; user-select:none;
+      box-shadow: 0 12px 24px rgba(0,0,0,.14);
+      transition: transform .08s ease, filter .2s ease;
+    }
+    button:active{ transform: scale(.98); }
+    #yes{
+      background: linear-gradient(135deg, #22c55e, #4ade80);
+      color:white;
+    }
+    #no{
+      background: linear-gradient(135deg, #ef4444, #fb7185);
+      color:white;
+      position:relative;
+    }
+
+    .result{
+      margin-top: 16px;
+      font-size: 17px;
+      min-height: 26px;
+      font-weight: 600;
+    }
+
+    .footer{
+      margin-top:12px; font-size:12px; opacity:.65;
+    }
+  </style>
+</head>
+<body>
+  <div class="flakes"></div>
+  <div class="bubbles"></div>
+
+  <div class="wrap">
+    <div class="card" id="card">
+      <div class="banner">
+        <div class="pineapple" aria-hidden="true"></div>
+      </div>
+
+      <h1>Gabriela 💛💙</h1>
+      <p>Te quería preguntar algo cool y especial…</p>
+
+      <div class="tagline">
+        <span class="pill">❄️ vibe pueblito</span>
+        <span class="pill">🌊 vibe undersea</span>
+        <span class="pill">✨ aesthetic</span>
+      </div>
+
+      <div class="question">¿Quieres ser mi Valentine? 💘</div>
+
+      <div class="btns">
+        <button id="yes">Sí 💞</button>
+        <button id="no">No 🙈</button>
+      </div>
+
+      <div class="result" id="result"></div>
+      <div class="footer">PD: si el “No” se pone rebelde… no es personal 😅</div>
+    </div>
+  </div>
+
+  <script>
+    const yes = document.getElementById("yes");
+    const no  = document.getElementById("no");
+    const result = document.getElementById("result");
+    const card = document.getElementById("card");
+
+    let moves = 0;
+
+    yes.addEventListener("click", () => {
+      result.textContent = "¡Durooo! 💖 Entonces es oficial 😌✨";
+      yes.disabled = true; no.disabled = true;
+      // mini efecto “brillo”
+      card.animate(
+        [{filter:"brightness(1)"},{filter:"brightness(1.08)"},{filter:"brightness(1)"}],
+        {duration:700, easing:"ease-out"}
+      );
+    });
+
+    function moveNo(){
+      // mueve el botón dentro de un rango razonable
+      const dx = (Math.random() * 240) - 120;
+      const dy = (Math.random() * 160) - 80;
+      no.style.transform = `translate(${dx}px, ${dy}px)`;
+      moves++;
+
+      const lines = [
+        "¿Seguro? 😅",
+        "No te creo 🙈",
+        "Esa mano tiembla… 😏",
+        "Ok ok… te doy otra oportunidad 😌",
+        "Última… ¿sí? 💘"
+      ];
+      if (moves <= lines.length) result.textContent = lines[moves-1];
+    }
+
+    no.addEventListener("mouseenter", moveNo);
+    no.addEventListener("click", moveNo);
+  </script>
+</body>
+</html>
