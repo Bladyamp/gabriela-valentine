@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>¿Quieres ser mi Valentine? 💞</title>
+  <title>¿Quieres ser mi Shan Valentine? 💞</title>
   <style>
     :root{
       --bg1:#ff4d7d;
@@ -145,26 +145,26 @@
   <main class="card" id="card">
     <div class="blast"></div>
     <div class="hearts">💞💗💞</div>
-    <h1 id="q">¿Quieres ser mi Valentine?</h1>
+    <h1 id="q">¿Miraaa... quieres ser mi Shan Valentine?</h1>
     <div class="from">— Blady 💘</div>
 
     <div class="btns" id="arena">
-      <button id="yes">Yes 😏</button>
+      <button id="yes">Sí 😏</button>
       <button id="no">No 🙈</button>
     </div>
 
     <div class="result" id="result"></div>
-    <div class="hint">*Pro tip: el “No” es medio cobarde 😅*</div>
+    <div class="hint">*Pro tip: No se vale decir "No". 😅*</div>
   </main>
 
   <script>
     // --- Personalización rápida opcional por URL:
-    // ?name=Gabriela  -> cambia el texto a "Gabriela, ¿quieres ser mi Valentine?"
+    // ?name=Gabriela  -> cambia el texto a "Gabriela, ¿quieres ser mi Shan Valentine?"
     // ?from=Blady     -> cambia la firma
     const params = new URLSearchParams(location.search);
     const name = params.get("name");
     const from = params.get("from") || "Blady";
-    if (name) document.getElementById("q").textContent = `${name}, ¿quieres ser mi Valentine?`;
+    if (name) document.getElementById("q").textContent = `${name}, ¿quieres ser mi Shan Valentine?`;
     document.querySelector(".from").textContent = `— ${from} 💘`;
 
     const card = document.getElementById("card");
@@ -186,7 +186,7 @@
       no.style.left = `${x}px`;
       no.style.top  = `${y}px`;
 
-      const lines = ["¿Seguro? 😅", "Ajá… 🙈", "No me convence 😏", "Dale yes, anda 💘"];
+      const lines = ["¿Segura? 😅", "Ajá… 🙈", "No te atrevas 😏", "Dale sí, anda 💘"];
       result.textContent = lines[Math.floor(Math.random()*lines.length)];
     }
 
