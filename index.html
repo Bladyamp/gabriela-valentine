@@ -3,247 +3,288 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Gabriela 💛💙</title>
+  <title>¿Quieres ser mi Valentine? 💞</title>
   <style>
     :root{
-      --snow:#eaf6ff;
-      --sky:#78b7ff;
-      --pine:#ffd45a;
-      --sea:#00c2d1;
-      --sea2:#0069b4;
-      --ink:#0f172a;
+      --bg1:#ff4d7d;
+      --bg2:#ffd1dc;
       --card: rgba(255,255,255,.92);
-      --shadow: 0 22px 60px rgba(0,0,0,.18);
-      --radius: 22px;
+      --ink:#111827;
+      --yes1:#22c55e;
+      --yes2:#4ade80;
+      --no1:#ef4444;
+      --no2:#fb7185;
     }
-
     *{ box-sizing:border-box; }
     body{
       margin:0; min-height:100vh; display:grid; place-items:center;
-      font-family: ui-rounded, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       color:var(--ink);
-      overflow:hidden;
       background:
-        radial-gradient(1200px 700px at 20% 10%, rgba(255,255,255,.9), rgba(255,255,255,0) 60%),
-        radial-gradient(900px 600px at 75% 15%, rgba(255,212,90,.35), rgba(0,0,0,0) 60%),
-        linear-gradient(180deg, var(--sky), #bfe6ff 40%, var(--sea) 70%, var(--sea2));
-    }
-
-    /* Aesthetic overlays: nieve + burbujas */
-    .flakes, .bubbles{
-      position:fixed; inset:0; pointer-events:none; opacity:.7;
-      background-repeat:repeat;
-      mix-blend-mode:soft-light;
-    }
-    .flakes{
-      background-image:
-        radial-gradient(circle, rgba(255,255,255,.9) 1px, transparent 2px),
-        radial-gradient(circle, rgba(255,255,255,.65) 1px, transparent 2px);
-      background-size: 120px 120px, 220px 220px;
-      animation: drift 14s linear infinite;
-      filter: blur(.2px);
-    }
-    .bubbles{
-      opacity:.45;
-      background-image:
-        radial-gradient(circle, rgba(255,255,255,.5) 2px, transparent 3px),
-        radial-gradient(circle, rgba(255,255,255,.35) 3px, transparent 4px),
-        radial-gradient(circle, rgba(255,255,255,.25) 4px, transparent 5px);
-      background-size: 160px 160px, 260px 260px, 360px 360px;
-      animation: rise 18s linear infinite;
-    }
-    @keyframes drift{
-      from{ transform: translateY(-20px); }
-      to{ transform: translateY(40px); }
-    }
-    @keyframes rise{
-      from{ transform: translateY(60px); }
-      to{ transform: translateY(-60px); }
-    }
-
-    .wrap{
-      width:min(560px, 92vw);
-      position:relative;
-      z-index:2;
+        radial-gradient(900px 500px at 20% 10%, rgba(255,255,255,.85), rgba(255,255,255,0) 60%),
+        radial-gradient(700px 420px at 80% 0%, rgba(255,255,255,.35), rgba(255,255,255,0) 60%),
+        linear-gradient(180deg, var(--bg2), var(--bg1));
+      overflow:hidden;
+      padding: 18px;
     }
 
     .card{
-      background:var(--card);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 26px 22px 22px;
-      border: 1px solid rgba(255,255,255,.5);
+      width:min(560px, 94vw);
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,.55);
+      border-radius: 22px;
+      padding: 26px 22px 20px;
+      box-shadow: 0 26px 70px rgba(0,0,0,.2);
+      text-align:center;
+      position:relative;
+      overflow:hidden;
       backdrop-filter: blur(10px);
-      position:relative;
-      overflow:hidden;
+      transform: translateZ(0);
     }
 
-    /* Split vibe banner: arriba “nieve/monte”, abajo “mar” */
-    .banner{
-      height: 140px;
-      border-radius: 18px;
-      position:relative;
-      overflow:hidden;
-      border: 1px solid rgba(0,0,0,.06);
-      margin-bottom: 16px;
-      box-shadow: 0 14px 28px rgba(0,0,0,.10);
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.65), rgba(255,255,255,0) 45%),
-        linear-gradient(180deg, #bfe6ff, #eaf6ff 55%, #00c2d1 56%, #0069b4);
-    }
-    /* Montañitas */
-    .banner:before{
-      content:"";
-      position:absolute; left:-8%; top:18%;
-      width:120%; height:70%;
-      background:
-        polygon(0 85%, 12% 55%, 22% 70%, 35% 45%, 46% 65%, 58% 40%, 70% 62%, 82% 48%, 100% 80%, 100% 100%, 0 100%);
-      -webkit-clip-path: polygon(0 85%, 12% 55%, 22% 70%, 35% 45%, 46% 65%, 58% 40%, 70% 62%, 82% 48%, 100% 80%, 100% 100%, 0 100%);
-      clip-path: polygon(0 85%, 12% 55%, 22% 70%, 35% 45%, 46% 65%, 58% 40%, 70% 62%, 82% 48%, 100% 80%, 100% 100%, 0 100%);
-      background-color: rgba(15,23,42,.16);
-      filter: blur(.2px);
-    }
-    /* Piña abstracta */
-    .pineapple{
-      position:absolute; right:14px; bottom:10px;
-      width:58px; height:74px; border-radius: 14px;
-      background:
-        repeating-linear-gradient(45deg, rgba(0,0,0,.08) 0 2px, rgba(255,255,255,0) 2px 10px),
-        linear-gradient(180deg, #ffe18a, var(--pine));
-      border: 1px solid rgba(0,0,0,.08);
-      box-shadow: 0 12px 20px rgba(0,0,0,.12);
-    }
-    .pineapple:before{
-      content:"";
-      position:absolute; left:50%; top:-18px; transform:translateX(-50%);
-      width:46px; height:28px;
-      background: radial-gradient(circle at 30% 70%, #2dd4bf, #16a34a);
-      border-radius: 0 0 14px 14px;
-      clip-path: polygon(50% 0%, 62% 20%, 82% 10%, 72% 45%, 100% 42%, 68% 70%, 82% 100%, 50% 78%, 18% 100%, 32% 70%, 0% 42%, 28% 45%, 18% 10%, 38% 20%);
-      opacity:.95;
-    }
-
-    .tagline{
-      display:flex; gap:10px; justify-content:center; flex-wrap:wrap;
-      font-size: 13px; opacity:.85; margin: 10px 0 18px;
-    }
-    .pill{
-      padding: 7px 10px; border-radius: 999px;
-      background: rgba(255,255,255,.75);
-      border: 1px solid rgba(0,0,0,.06);
-    }
-
+    .hearts{ font-size: 28px; margin-bottom: 8px; }
     h1{
-      margin: 2px 0 8px;
-      font-size: clamp(26px, 5vw, 36px);
+      margin: 0 0 6px;
+      font-size: clamp(24px, 4.8vw, 36px);
       letter-spacing: .2px;
     }
-    p{ margin: 0 0 16px; opacity:.85; line-height:1.35; }
-
-    .question{
-      margin: 10px 0 14px;
-      font-size: clamp(18px, 3.4vw, 22px);
+    .from{
+      margin: 0 0 14px;
       font-weight: 700;
+      opacity:.85;
     }
 
-    .btns{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:10px; }
+    .btns{
+      display:flex;
+      justify-content:center;
+      gap: 12px;
+      flex-wrap:wrap;
+      margin-top: 14px;
+      position:relative;
+      height: 64px; /* espacio para el no escapista */
+    }
+
     button{
-      border:0; border-radius: 16px; padding: 12px 20px;
-      font-size: 18px; cursor:pointer; user-select:none;
-      box-shadow: 0 12px 24px rgba(0,0,0,.14);
+      border:0;
+      border-radius: 16px;
+      padding: 12px 18px;
+      font-size: 18px;
+      cursor:pointer;
+      user-select:none;
+      box-shadow: 0 14px 28px rgba(0,0,0,.14);
       transition: transform .08s ease, filter .2s ease;
+      position: relative;
     }
     button:active{ transform: scale(.98); }
+
     #yes{
-      background: linear-gradient(135deg, #22c55e, #4ade80);
+      background: linear-gradient(135deg, var(--yes1), var(--yes2));
       color:white;
+      min-width: 120px;
     }
     #no{
-      background: linear-gradient(135deg, #ef4444, #fb7185);
+      background: linear-gradient(135deg, var(--no1), var(--no2));
       color:white;
-      position:relative;
+      min-width: 120px;
+      position:absolute;
+      left:50%;
+      transform: translateX(10px);
     }
 
     .result{
-      margin-top: 16px;
-      font-size: 17px;
-      min-height: 26px;
-      font-weight: 600;
+      margin-top: 14px;
+      font-size: 18px;
+      min-height: 28px;
+      font-weight: 800;
     }
 
-    .footer{
-      margin-top:12px; font-size:12px; opacity:.65;
+    /* Efecto BRUTAL */
+    .blast{
+      position:absolute; inset:-40%;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(255,255,255,.95), rgba(255,255,255,0) 45%),
+        radial-gradient(circle at 70% 35%, rgba(34,197,94,.35), rgba(34,197,94,0) 55%),
+        radial-gradient(circle at 50% 70%, rgba(255,77,125,.35), rgba(255,77,125,0) 55%);
+      opacity:0;
+      transform: scale(.9);
+      transition: opacity .35s ease, transform .55s ease;
+      pointer-events:none;
+      mix-blend-mode: screen;
+      filter: blur(0px);
+    }
+    .card.win .blast{ opacity:1; transform: scale(1.06); }
+
+    .card.win{
+      animation: boom .55s ease-out both;
+    }
+    @keyframes boom{
+      0%{ transform: translateY(0) scale(1); filter: brightness(1); }
+      35%{ transform: translateY(-2px) scale(1.02); filter: brightness(1.12); }
+      70%{ transform: translateY(0) scale(1.01); }
+      100%{ transform: translateY(0) scale(1); filter: brightness(1.03); }
+    }
+
+    /* Confetti canvas encima */
+    canvas#confetti{
+      position:fixed; inset:0;
+      width:100vw; height:100vh;
+      pointer-events:none;
+      z-index: 10;
+    }
+
+    .hint{
+      margin-top: 8px;
+      font-size: 12px;
+      opacity:.65;
     }
   </style>
 </head>
 <body>
-  <div class="flakes"></div>
-  <div class="bubbles"></div>
+  <canvas id="confetti"></canvas>
 
-  <div class="wrap">
-    <div class="card" id="card">
-      <div class="banner">
-        <div class="pineapple" aria-hidden="true"></div>
-      </div>
+  <main class="card" id="card">
+    <div class="blast"></div>
+    <div class="hearts">💞💗💞</div>
+    <h1 id="q">¿Quieres ser mi Valentine?</h1>
+    <div class="from">— Blady 💘</div>
 
-      <h1>Gabriela 💛💙</h1>
-      <p>Te quería preguntar algo cool y especial…</p>
-
-      <div class="tagline">
-        <span class="pill">❄️ vibe pueblito</span>
-        <span class="pill">🌊 vibe undersea</span>
-        <span class="pill">✨ aesthetic</span>
-      </div>
-
-      <div class="question">¿Quieres ser mi Valentine? 💘</div>
-
-      <div class="btns">
-        <button id="yes">Sí 💞</button>
-        <button id="no">No 🙈</button>
-      </div>
-
-      <div class="result" id="result"></div>
-      <div class="footer">PD: si el “No” se pone rebelde… no es personal 😅</div>
+    <div class="btns" id="arena">
+      <button id="yes">Yes 😏</button>
+      <button id="no">No 🙈</button>
     </div>
-  </div>
+
+    <div class="result" id="result"></div>
+    <div class="hint">*Pro tip: el “No” es medio cobarde 😅*</div>
+  </main>
 
   <script>
+    // --- Personalización rápida opcional por URL:
+    // ?name=Gabriela  -> cambia el texto a "Gabriela, ¿quieres ser mi Valentine?"
+    // ?from=Blady     -> cambia la firma
+    const params = new URLSearchParams(location.search);
+    const name = params.get("name");
+    const from = params.get("from") || "Blady";
+    if (name) document.getElementById("q").textContent = `${name}, ¿quieres ser mi Valentine?`;
+    document.querySelector(".from").textContent = `— ${from} 💘`;
+
+    const card = document.getElementById("card");
     const yes = document.getElementById("yes");
     const no  = document.getElementById("no");
+    const arena = document.getElementById("arena");
     const result = document.getElementById("result");
-    const card = document.getElementById("card");
 
-    let moves = 0;
+    // --- NO escapa dentro del área de botones
+    function dodgeNo() {
+      const rect = arena.getBoundingClientRect();
+      const btnRect = no.getBoundingClientRect();
+      const maxX = rect.width - btnRect.width;
+      const maxY = rect.height - btnRect.height;
 
-    yes.addEventListener("click", () => {
-      result.textContent = "¡Durooo! 💖 Entonces es oficial 😌✨";
-      yes.disabled = true; no.disabled = true;
-      // mini efecto “brillo”
-      card.animate(
-        [{filter:"brightness(1)"},{filter:"brightness(1.08)"},{filter:"brightness(1)"}],
-        {duration:700, easing:"ease-out"}
-      );
-    });
+      const x = Math.max(0, Math.min(maxX, Math.random() * maxX));
+      const y = Math.max(0, Math.min(maxY, Math.random() * maxY));
 
-    function moveNo(){
-      // mueve el botón dentro de un rango razonable
-      const dx = (Math.random() * 240) - 120;
-      const dy = (Math.random() * 160) - 80;
-      no.style.transform = `translate(${dx}px, ${dy}px)`;
-      moves++;
+      no.style.left = `${x}px`;
+      no.style.top  = `${y}px`;
 
-      const lines = [
-        "¿Seguro? 😅",
-        "No te creo 🙈",
-        "Esa mano tiembla… 😏",
-        "Ok ok… te doy otra oportunidad 😌",
-        "Última… ¿sí? 💘"
-      ];
-      if (moves <= lines.length) result.textContent = lines[moves-1];
+      const lines = ["¿Seguro? 😅", "Ajá… 🙈", "No me convence 😏", "Dale yes, anda 💘"];
+      result.textContent = lines[Math.floor(Math.random()*lines.length)];
     }
 
-    no.addEventListener("mouseenter", moveNo);
-    no.addEventListener("click", moveNo);
+    no.addEventListener("mouseenter", dodgeNo);
+    no.addEventListener("click", dodgeNo);
+
+    // --- YES: mensaje + efecto brutal + confetti
+    yes.addEventListener("click", () => {
+      card.classList.add("win");
+      result.textContent = "Ufff. Nos vemos en Golden Corral 😮‍💨🔥";
+      yes.disabled = true;
+      no.disabled = true;
+
+      popConfetti(220);      // cantidad
+      burstShake();          // micro vibración
+    });
+
+    function burstShake(){
+      card.animate(
+        [
+          { transform:"translateX(0px)" },
+          { transform:"translateX(-3px)" },
+          { transform:"translateX(3px)" },
+          { transform:"translateX(-2px)" },
+          { transform:"translateX(2px)" },
+          { transform:"translateX(0px)" },
+        ],
+        { duration: 280, easing:"ease-out" }
+      );
+    }
+
+    // --- Confetti (canvas) sin librerías
+    const canvas = document.getElementById("confetti");
+    const ctx = canvas.getContext("2d");
+    let W, H;
+    function resize(){
+      W = canvas.width = Math.floor(window.innerWidth * devicePixelRatio);
+      H = canvas.height = Math.floor(window.innerHeight * devicePixelRatio);
+      ctx.scale(devicePixelRatio, devicePixelRatio);
+    }
+    // Evita el scale acumulado
+    function hardResize(){
+      canvas.width = Math.floor(window.innerWidth * devicePixelRatio);
+      canvas.height = Math.floor(window.innerHeight * devicePixelRatio);
+      ctx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
+      W = window.innerWidth; H = window.innerHeight;
+    }
+    hardResize();
+    window.addEventListener("resize", hardResize);
+
+    const confetti = [];
+    function popConfetti(count){
+      const colors = ["#22c55e","#4ade80","#ff4d7d","#fb7185","#60a5fa","#fbbf24","#a78bfa","#34d399"];
+      for(let i=0;i<count;i++){
+        confetti.push({
+          x: Math.random()*W,
+          y: -20 - Math.random()*H*0.2,
+          vx: (Math.random()-0.5)*6,
+          vy: 2 + Math.random()*6,
+          r: 2 + Math.random()*4,
+          rot: Math.random()*Math.PI,
+          vr: (Math.random()-0.5)*0.25,
+          c: colors[Math.floor(Math.random()*colors.length)],
+          life: 220 + Math.random()*120
+        });
+      }
+      if(!animating) requestAnimationFrame(tick);
+      animating = true;
+    }
+
+    let animating = false;
+    function tick(){
+      ctx.clearRect(0,0,W,H);
+      for(let i=confetti.length-1;i>=0;i--){
+        const p = confetti[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += 0.03; // gravedad suave
+        p.rot += p.vr;
+        p.life -= 1;
+
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rot);
+        ctx.fillStyle = p.c;
+        ctx.fillRect(-p.r, -p.r, p.r*2.2, p.r*1.2);
+        ctx.restore();
+
+        if(p.y > H + 40 || p.life <= 0) confetti.splice(i,1);
+      }
+      if(confetti.length){
+        requestAnimationFrame(tick);
+      }else{
+        animating = false;
+        ctx.clearRect(0,0,W,H);
+      }
+    }
   </script>
 </body>
 </html>
+
