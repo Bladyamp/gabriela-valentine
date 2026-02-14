@@ -3,143 +3,86 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Gabriela 💘</title>
+  <title>Gabriela 💖</title>
+
   <style>
     :root{
-      --bg1:#ffd1dc;
-      --bg2:#ff5c8a;
-      --card: rgba(255,255,255,.92);
-      --ink:#111827;
-      --yes1:#22c55e;
-      --yes2:#4ade80;
-      --no1:#ef4444;
-      --no2:#fb7185;
+      --bg1:#0b1020;
+      --bg2:#121a36;
+      --neon1:#00ffa8;
+      --neon2:#ff4dff;
+      --neon3:#45a3ff;
+      --ink:#eaf2ff;
+      --muted:#b8c7ff;
+
+      --yes1:#00ffa8;
+      --yes2:#00c07a;
+      --no1:#ff3d57;
+      --no2:#b4001f;
+
+      --panel: rgba(18, 26, 54, .86);
+      --panel2: rgba(10, 16, 36, .72);
+      --border: rgba(255,255,255,.14);
+      --shadow: 0 24px 80px rgba(0,0,0,.55);
     }
+
     *{ box-sizing:border-box; }
+
     body{
       margin:0;
       min-height:100vh;
       display:grid;
       place-items:center;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color:var(--ink);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      color: var(--ink);
       background:
-        radial-gradient(900px 500px at 20% 10%, rgba(255,255,255,.9), rgba(255,255,255,0) 60%),
-        radial-gradient(700px 420px at 80% 0%, rgba(255,255,255,.35), rgba(255,255,255,0) 60%),
+        radial-gradient(900px 600px at 18% 12%, rgba(69,163,255,.28), transparent 60%),
+        radial-gradient(900px 600px at 82% 18%, rgba(255,77,255,.20), transparent 60%),
+        radial-gradient(900px 600px at 60% 80%, rgba(0,255,168,.15), transparent 60%),
         linear-gradient(180deg, var(--bg1), var(--bg2));
       overflow:hidden;
-      padding: 18px;
+      padding:18px;
+    }
+
+    /* scanlines retro */
+    .scanlines{
+      position:fixed; inset:0;
+      pointer-events:none;
+      background: repeating-linear-gradient(
+        to bottom,
+        rgba(255,255,255,.04) 0px,
+        rgba(255,255,255,.04) 1px,
+        rgba(0,0,0,0) 3px,
+        rgba(0,0,0,0) 6px
+      );
+      opacity:.35;
+      mix-blend-mode: overlay;
+      z-index: 5;
+    }
+
+    /* estrellas pixel */
+    .stars{
+      position:fixed; inset:0;
+      pointer-events:none;
+      background-image:
+        radial-gradient(circle, rgba(255,255,255,.9) 1px, transparent 2px),
+        radial-gradient(circle, rgba(255,255,255,.7) 1px, transparent 2px),
+        radial-gradient(circle, rgba(255,255,255,.5) 1px, transparent 2px);
+      background-size: 160px 160px, 240px 240px, 340px 340px;
+      opacity:.35;
+      animation: drift 18s linear infinite;
+      z-index: 2;
+    }
+    @keyframes drift{
+      from{ transform: translateY(-20px); }
+      to{ transform: translateY(40px); }
     }
 
     canvas#confetti{
       position:fixed; inset:0;
       width:100vw; height:100vh;
       pointer-events:none;
-      z-index: 50;
-    }
-
-    .card{
-      width:min(520px, 94vw);
-      background: var(--card);
-      border: 1px solid rgba(255,255,255,.55);
-      border-radius: 22px;
-      padding: 26px 22px 18px;
-      box-shadow: 0 26px 70px rgba(0,0,0,.20);
-      text-align:center;
-      position:relative;
-      overflow:hidden;
-      backdrop-filter: blur(10px);
-      transform: translateZ(0);
-    }
-
-    .spark{
-      position:absolute; inset:-40%;
-      opacity:0;
-      pointer-events:none;
-      background:
-        radial-gradient(circle at 30% 30%, rgba(255,255,255,.95), rgba(255,255,255,0) 45%),
-        radial-gradient(circle at 70% 35%, rgba(34,197,94,.35), rgba(34,197,94,0) 55%),
-        radial-gradient(circle at 50% 70%, rgba(255,92,138,.35), rgba(255,92,138,0) 55%);
-      transition: opacity .35s ease, transform .55s ease;
-      transform: scale(.92);
-      mix-blend-mode: screen;
-    }
-    .card.win .spark{ opacity:1; transform: scale(1.06); }
-
-    .hearts{ font-size: 28px; margin-bottom: 8px; }
-    h1{
-      margin: 0 0 6px;
-      font-size: clamp(24px, 5vw, 34px);
-      letter-spacing: .2px;
-    }
-    .from{
-      margin: 0 0 14px;
-      font-weight: 800;
-      opacity:.85;
-    }
-
-    .btns{
-      display:flex;
-      justify-content:center;
-      gap:12px;
-      flex-wrap:wrap;
-      margin-top: 14px;
-      position:relative;
-      height: 84px;
-    }
-
-    button{
-      border:0;
-      border-radius: 16px;
-      padding: 13px 20px;
-      font-size: 18px;
-      cursor:pointer;
-      user-select:none;
-      box-shadow: 0 14px 28px rgba(0,0,0,.14);
-      transition: transform .08s ease, filter .2s ease;
-      min-width: 150px;
-    }
-    button:active{ transform: scale(.98); }
-
-    #yes{
-      background: linear-gradient(135deg, var(--yes1), var(--yes2));
-      color:white;
-      position:relative;
-      z-index:2;
-    }
-
-    #no{
-      background: linear-gradient(135deg, var(--no1), var(--no2));
-      color:white;
-      position:absolute;
-      left: calc(50% + 110px);
-      top: 0;
-      transform: translateX(-50%);
-      z-index:1;
-    }
-
-    .result{
-      margin-top: 14px;
-      font-size: 18px;
-      min-height: 28px;
-      font-weight: 800;
-    }
-
-    .hint{
-      margin-top: 8px;
-      font-size: 12px;
-      opacity:.65;
-    }
-
-    /* Animaciones brutales */
-    .card.win{
-      animation: boom .55s ease-out both;
-    }
-    @keyframes boom{
-      0%{ transform: scale(1); filter: brightness(1); }
-      35%{ transform: scale(1.03); filter: brightness(1.14); }
-      70%{ transform: scale(1.01); }
-      100%{ transform: scale(1); filter: brightness(1.05); }
+      z-index: 60;
     }
 
     .flash{
@@ -147,189 +90,351 @@
       background:white;
       opacity:0;
       pointer-events:none;
-      z-index: 40;
+      z-index: 55;
     }
     .flash.on{
       animation: flash .45s ease-out both;
     }
     @keyframes flash{
       0%{opacity:0}
-      15%{opacity:.75}
+      15%{opacity:.8}
       100%{opacity:0}
+    }
+
+    .card{
+      width:min(560px, 94vw);
+      background: linear-gradient(180deg, var(--panel), var(--panel2));
+      border: 2px solid var(--border);
+      border-radius: 18px;
+      padding: 22px 18px 16px;
+      box-shadow: var(--shadow);
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+      z-index: 10;
+    }
+
+    /* borde pixelado */
+    .pixel-frame{
+      position:absolute; inset:10px;
+      border: 2px dashed rgba(255,255,255,.12);
+      border-radius: 14px;
+      pointer-events:none;
+    }
+
+    .title{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:10px;
+      margin-bottom:8px;
+      text-shadow: 0 0 18px rgba(69,163,255,.35);
+      letter-spacing: .4px;
+    }
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    h1{
+      margin: 6px 0 10px;
+      font-size: clamp(22px, 4.8vw, 34px);
+      line-height:1.15;
+    }
+
+    .from{
+      margin: 0 0 14px;
+      font-weight: 800;
+      color: var(--muted);
+    }
+
+    .prompt{
+      margin: 8px 0 0;
+      font-size: 13px;
+      color: rgba(234,242,255,.72);
+    }
+
+    .btns{
+      position:relative;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap: 40px;     /* separación clara */
+      margin-top: 18px;
+      height: 100px; /* área para que el No se mueva */
+    }
+
+    button{
+      border:0;
+      border-radius: 14px;
+      padding: 14px 18px;
+      font-size: 16px;
+      cursor:pointer;
+      min-width: 170px;
+      color: #071018;
+      font-weight: 900;
+      letter-spacing: .4px;
+      text-transform: uppercase;
+
+      box-shadow:
+        0 14px 0 rgba(0,0,0,.25),
+        0 24px 40px rgba(0,0,0,.35);
+      transform: translateY(0);
+      transition: transform .08s ease, filter .2s ease;
+      user-select:none;
+      position:relative;
+    }
+
+    button:active{
+      transform: translateY(6px);
+      box-shadow:
+        0 8px 0 rgba(0,0,0,.25),
+        0 18px 30px rgba(0,0,0,.32);
+    }
+
+    /* estilo arcade “bevel” */
+    button::before{
+      content:"";
+      position:absolute; inset:2px;
+      border-radius: 12px;
+      border: 2px solid rgba(255,255,255,.35);
+      opacity:.35;
+      pointer-events:none;
+    }
+
+    #yes{
+      background: linear-gradient(135deg, var(--yes1), var(--yes2));
+      z-index: 2;
+    }
+
+    #no{
+      background: linear-gradient(135deg, var(--no1), var(--no2));
+      color: #ffe8ee;
+      position:absolute;         /* escapista */
+      left: calc(50% + 140px);   /* arranca separado a la derecha */
+      top: 0;
+      transform: translateX(-50%);
+      z-index: 1;
+    }
+
+    .result{
+      margin-top: 16px;
+      min-height: 30px;
+      font-size: 16px;
+      font-weight: 900;
+      color: var(--ink);
+      text-shadow: 0 0 14px rgba(0,255,168,.22);
+    }
+
+    .hint{
+      margin-top: 10px;
+      font-size: 12px;
+      color: rgba(234,242,255,.55);
+    }
+
+    /* glow brutal al ganar */
+    .card.win{
+      animation: winPulse .65s ease-out both;
+      box-shadow:
+        0 0 0 2px rgba(0,255,168,.25),
+        0 0 80px rgba(0,255,168,.20),
+        0 0 110px rgba(255,77,255,.16),
+        var(--shadow);
+    }
+    @keyframes winPulse{
+      0%{ transform: scale(1); filter: brightness(1); }
+      35%{ transform: scale(1.03); filter: brightness(1.16); }
+      70%{ transform: scale(1.01); }
+      100%{ transform: scale(1); filter: brightness(1.06); }
     }
   </style>
 </head>
+
 <body>
   <canvas id="confetti"></canvas>
   <div class="flash" id="flash"></div>
+  <div class="stars"></div>
+  <div class="scanlines"></div>
 
   <main class="card" id="card">
-    <div class="spark"></div>
-    <div class="hearts">💞💗💞</div>
+    <div class="pixel-frame"></div>
+
+    <div class="title">
+      <span class="badge">🎮 RETRO MODE</span>
+      <span class="badge">💖 VALENTINE QUEST</span>
+    </div>
 
     <h1 id="q">Gabriela, ¿quieres ser mi Valentine?</h1>
     <div class="from">— Blady 💘</div>
+    <div class="prompt">Pulsa YES para avanzar de nivel… 👾</div>
 
     <div class="btns" id="arena">
-      <button id="yes">Yes 😏</button>
-      <button id="no">No 🙈</button>
+      <button id="yes">YES</button>
+      <button id="no">NO</button>
     </div>
 
     <div class="result" id="result"></div>
-    <div class="hint">*Pro tip: no se vale decir “No” 😅*</div>
+    <div class="hint">Tip: el botón NO es un boss… y se asusta 😅</div>
   </main>
 
-<script>
-  const card = document.getElementById("card");
-  const yes  = document.getElementById("yes");
-  const no   = document.getElementById("no");
-  const arena = document.getElementById("arena");
-  const q = document.getElementById("q");
-  const result = document.getElementById("result");
-  const flash = document.getElementById("flash");
+  <script>
+    const card = document.getElementById("card");
+    const yes  = document.getElementById("yes");
+    const no   = document.getElementById("no");
+    const arena = document.getElementById("arena");
+    const q = document.getElementById("q");
+    const result = document.getElementById("result");
+    const flash = document.getElementById("flash");
 
-  // -------- NO se escapa dentro del área --------
-  function dodgeNo() {
-    const rect = arena.getBoundingClientRect();
-    const btnRect = no.getBoundingClientRect();
+    // ----- NO se escapa dentro del área -----
+    function dodgeNo(){
+      const rect = arena.getBoundingClientRect();
+      const btnRect = no.getBoundingClientRect();
 
-    const maxX = rect.width - btnRect.width;
-    const maxY = rect.height - btnRect.height;
+      const maxX = rect.width - btnRect.width;
+      const maxY = rect.height - btnRect.height;
 
-    const x = Math.max(0, Math.min(maxX, Math.random() * maxX));
-    const y = Math.max(0, Math.min(maxY, Math.random() * maxY));
+      const x = Math.max(0, Math.min(maxX, Math.random() * maxX));
+      const y = Math.max(0, Math.min(maxY, Math.random() * maxY));
 
-    no.style.left = `${x}px`;
-    no.style.top  = `${y}px`;
-    no.style.transform = "none";
+      no.style.left = `${x}px`;
+      no.style.top  = `${y}px`;
+      no.style.transform = "none";
+      no.style.transition = "transform .06s ease";
 
-    const lines = ["¿Segura? 😅", "Ajá… 🙈", "No te atrevas 😏", "Dale yes, anda 💘"];
-    result.textContent = lines[Math.floor(Math.random()*lines.length)];
-  }
-  no.addEventListener("mouseenter", dodgeNo);
-  no.addEventListener("click", dodgeNo);
-
-  // -------- YES por etapas (varios clics) --------
-  const stages = [
-    { title: "¿De verdaddd? 😳", msg: "Piénsalo bien... 👀", confetti: 0 },
-    { title: "Ok ok…", msg: "Ya me estás ilusionando 😏", confetti: 40 },
-    { title: "Última oportunidad 😌", msg: "Dale al Yes otra vez…", confetti: 80 },
-    { title: "BOOM 💥", msg: "Ufff. Nos vemos en Golden Corral 😮‍💨🔥", confetti: 260, final: true }
-  ];
-  let yesClicks = 0;
-
-  yes.addEventListener("click", () => {
-    const stage = stages[Math.min(yesClicks, stages.length - 1)];
-    yesClicks++;
-
-    q.textContent = stage.title;
-    result.textContent = stage.msg;
-
-    yes.animate(
-      [
-        { transform: "scale(1)" },
-        { transform: "scale(1.22)" },
-        { transform: "scale(1.08)" },
-        { transform: "scale(1.14)" },
-        { transform: "scale(1)" }
-      ],
-      { duration: 600, easing: "cubic-bezier(.2,1.2,.2,1)" }
-    );
-
-    if (stage.confetti) popConfetti(stage.confetti);
-
-    if (stage.final) {
-      card.classList.add("win");
-      burstShake();
-      flash.classList.remove("on");
-      void flash.offsetWidth; // reinicia anim
-      flash.classList.add("on");
-      yes.disabled = true;
-      no.disabled = true;
+      const lines = ["NO esquivado 😈", "Buen try… 🙈", "Nope 😏", "Dale YES 💘"];
+      result.textContent = lines[(Math.random()*lines.length)|0];
     }
-  });
+    no.addEventListener("mouseenter", dodgeNo);
+    no.addEventListener("click", dodgeNo);
 
-  function burstShake(){
-    card.animate(
-      [
-        { transform:"translateX(0px)" },
-        { transform:"translateX(-4px)" },
-        { transform:"translateX(4px)" },
-        { transform:"translateX(-3px)" },
-        { transform:"translateX(3px)" },
-        { transform:"translateX(0px)" },
-      ],
-      { duration: 320, easing:"ease-out" }
-    );
-  }
+    // ----- YES por niveles (varios clics) -----
+    const stages = [
+      { title: "LEVEL 1 ✅", msg: "Ok… empezamos suave 😳", confetti: 20 },
+      { title: "LEVEL 2 ✅", msg: "Ya vas en serio… 👀", confetti: 50 },
+      { title: "LEVEL 3 ✅", msg: "Último nivel… 😏", confetti: 90 },
+      { title: "FINAL BOSS 💥", msg: "Ufff. Nos vemos en Golden Corral 😮‍💨🔥", confetti: 260, final:true }
+    ];
+    let yesClicks = 0;
 
-  // -------- Confetti (canvas) sin librerías --------
-  const canvas = document.getElementById("confetti");
-  const ctx = canvas.getContext("2d");
+    yes.addEventListener("click", () => {
+      const stage = stages[Math.min(yesClicks, stages.length - 1)];
+      yesClicks++;
 
-  function hardResize(){
-    canvas.width  = Math.floor(window.innerWidth * devicePixelRatio);
-    canvas.height = Math.floor(window.innerHeight * devicePixelRatio);
-    ctx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
-  }
-  hardResize();
-  window.addEventListener("resize", hardResize);
+      q.textContent = stage.title;
+      result.textContent = stage.msg;
 
-  const confetti = [];
-  let animating = false;
+      // animación arcade del botón
+      yes.animate(
+        [
+          { transform: "translateY(0) scale(1)" },
+          { transform: "translateY(-2px) scale(1.18)" },
+          { transform: "translateY(0) scale(1.08)" },
+          { transform: "translateY(-1px) scale(1.12)" },
+          { transform: "translateY(0) scale(1)" }
+        ],
+        { duration: 620, easing: "cubic-bezier(.2,1.2,.2,1)" }
+      );
 
-  function popConfetti(count){
-    const W = window.innerWidth, H = window.innerHeight;
-    const colors = ["#22c55e","#4ade80","#ff4d7d","#fb7185","#60a5fa","#fbbf24","#a78bfa","#34d399"];
+      popConfetti(stage.confetti);
 
-    for(let i=0;i<count;i++){
-      confetti.push({
-        x: Math.random()*W,
-        y: -20 - Math.random()*H*0.15,
-        vx: (Math.random()-0.5)*7,
-        vy: 2 + Math.random()*7,
-        r: 2 + Math.random()*5,
-        rot: Math.random()*Math.PI,
-        vr: (Math.random()-0.5)*0.35,
-        c: colors[(Math.random()*colors.length)|0],
-        life: 220 + Math.random()*140
-      });
-    }
-    if(!animating){
-      animating = true;
-      requestAnimationFrame(tick);
-    }
-  }
+      if(stage.final){
+        card.classList.add("win");
+        burstShake();
+        flash.classList.remove("on"); void flash.offsetWidth; flash.classList.add("on");
+        yes.disabled = true;
+        no.disabled = true;
+      }
+    });
 
-  function tick(){
-    const W = window.innerWidth, H = window.innerHeight;
-    ctx.clearRect(0,0,W,H);
-
-    for(let i=confetti.length-1;i>=0;i--){
-      const p = confetti[i];
-      p.x += p.vx;
-      p.y += p.vy;
-      p.vy += 0.04;
-      p.rot += p.vr;
-      p.life -= 1;
-
-      ctx.save();
-      ctx.translate(p.x, p.y);
-      ctx.rotate(p.rot);
-      ctx.fillStyle = p.c;
-      ctx.fillRect(-p.r, -p.r, p.r*2.4, p.r*1.2);
-      ctx.restore();
-
-      if(p.y > H + 50 || p.life <= 0) confetti.splice(i,1);
+    function burstShake(){
+      card.animate(
+        [
+          { transform:"translateX(0px)" },
+          { transform:"translateX(-5px)" },
+          { transform:"translateX(5px)" },
+          { transform:"translateX(-4px)" },
+          { transform:"translateX(4px)" },
+          { transform:"translateX(0px)" },
+        ],
+        { duration: 340, easing:"ease-out" }
+      );
     }
 
-    if(confetti.length){
-      requestAnimationFrame(tick);
-    }else{
-      animating = false;
+    // ----- Confetti (canvas) -----
+    const canvas = document.getElementById("confetti");
+    const ctx = canvas.getContext("2d");
+
+    function hardResize(){
+      canvas.width  = Math.floor(window.innerWidth * devicePixelRatio);
+      canvas.height = Math.floor(window.innerHeight * devicePixelRatio);
+      ctx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
+    }
+    hardResize();
+    window.addEventListener("resize", hardResize);
+
+    const confetti = [];
+    let animating = false;
+
+    function popConfetti(count){
+      const W = window.innerWidth, H = window.innerHeight;
+      const colors = ["#00ffa8","#ff4dff","#45a3ff","#ffd166","#ff3d57","#b8c7ff"];
+
+      for(let i=0;i<count;i++){
+        confetti.push({
+          x: Math.random()*W,
+          y: -20 - Math.random()*H*0.15,
+          vx: (Math.random()-0.5)*7,
+          vy: 2 + Math.random()*7,
+          r: 2 + Math.random()*5,
+          rot: Math.random()*Math.PI,
+          vr: (Math.random()-0.5)*0.35,
+          c: colors[(Math.random()*colors.length)|0],
+          life: 220 + Math.random()*140
+        });
+      }
+      if(!animating){
+        animating = true;
+        requestAnimationFrame(tick);
+      }
+    }
+
+    function tick(){
+      const W = window.innerWidth, H = window.innerHeight;
       ctx.clearRect(0,0,W,H);
+
+      for(let i=confetti.length-1;i>=0;i--){
+        const p = confetti[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += 0.04;
+        p.rot += p.vr;
+        p.life -= 1;
+
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rot);
+        ctx.fillStyle = p.c;
+        ctx.fillRect(-p.r, -p.r, p.r*2.6, p.r*1.2);
+        ctx.restore();
+
+        if(p.y > H + 50 || p.life <= 0) confetti.splice(i,1);
+      }
+
+      if(confetti.length){
+        requestAnimationFrame(tick);
+      }else{
+        animating = false;
+        ctx.clearRect(0,0,W,H);
+      }
     }
-  }
-</script>
+  </script>
 </body>
 </html>
